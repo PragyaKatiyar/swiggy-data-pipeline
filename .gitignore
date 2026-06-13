@@ -1,0 +1,17 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Data files — never push to GitHub
+landing/
+*.json
+
+# Mac
+.DS_Store
+
+# IDE
+.vscode/
+.idea/

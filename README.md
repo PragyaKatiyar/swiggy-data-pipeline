@@ -128,6 +128,20 @@ Metrics:
 * Average Order Value
 
 ---
+## Orchestration
+
+This pipeline is orchestrated via a Databricks Job with the following 
+task dependency graph:
+
+bronze_orders   ──┐
+bronze_delivery ──┼──→ silver_facts ──┐
+bronze_dims     ──┘                   ├──→ gold
+                   silver_dims ───────┘
+
+- Schedule: Daily at 1:00 AM IST
+- Compute: Serverless
+- Bronze tasks run in parallel
+- Failure notifications sent via email
 
 ## Tech Stack
 
@@ -275,7 +289,7 @@ Through this project, the following data engineering concepts were implemented a
 
 ## Future Enhancements
 
-* Databricks Workflows / Jobs
+* Databricks Workflows / Jobs -- Done
 * Real-time Streaming with Kafka
 * Airflow Orchestration
 * Great Expectations Data Quality Checks
